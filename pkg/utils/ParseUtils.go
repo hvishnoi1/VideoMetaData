@@ -16,9 +16,9 @@ func ParseInt(s string) int {
 	return 0
 }
 
-func ParseFloat64(s string) float64 {
-	if f, err := strconv.ParseFloat(s, 64); err == nil {
-		return f
+func ParseFloat32(s string) float32 {
+	if f, err := strconv.ParseFloat(s, 32); err == nil {
+		return float32(f)
 	}
 	return 0
 }
