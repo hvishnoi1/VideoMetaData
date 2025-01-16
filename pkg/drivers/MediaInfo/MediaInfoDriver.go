@@ -54,6 +54,7 @@ func (m *MediaInfoDriver) Init(preferredBinaryPath string, callArgs *[]string) e
 	return nil
 }
 
+// Get video meta data using the specified driver
 func (m *MediaInfoDriver) GetVideoMetadata(file string) (*structs.VideoMetaData, error) {
 	if m == nil || m.executablePath == "" {
 		return nil, errors.New(ERR_DRIVER_NOT_INITIALIZED)
@@ -83,6 +84,7 @@ func (m *MediaInfoDriver) GetVideoMetadata(file string) (*structs.VideoMetaData,
 	return videoMetaData, nil
 }
 
+// Returns the driver version
 func (m *MediaInfoDriver) Version() string {
 	if m == nil || m.executablePath == "" {
 		return errors.New(ERR_DRIVER_NOT_INITIALIZED).Error()
@@ -107,16 +109,16 @@ func mapMediaInfoJsonToVideoMetaData(mediaInfoOutput MediaInfoOutput, videoMetad
 			videoMetadata.Height = utils.ParseInt(track.Height)
 			videoMetadata.Width = utils.ParseInt(track.Width)
 			videoMetadata.AspectRatio = utils.AspectRatioFloatToString(videoMetadata.Width, videoMetadata.Height)
-			videoMetadata.VideoDuration = utils.ParseFloat32(track.Duration)
+			videoMetadata.VideoDuration = utils.ParseFloat64(track.Duration)
 			videoMetadata.VideoCodec = track.Format
-			videoMetadata.VideoBitRate = utils.ParseFloat32(track.BitRate)
-			videoMetadata.VideoFrameRate = utils.ParseFloat32(track.FrameRate)
+			videoMetadata.VideoBitRate = utils.ParseFloat64(track.BitRate)
+			videoMetadata.VideoFrameRate = utils.ParseFloat64(track.FrameRate)
 		case TYPE_AUDIO:
 			videoMetadata.AudioCodec = track.Format
-			videoMetadata.AudioBitRate = utils.ParseFloat32(track.BitRate)
-			videoMetadata.AudioFrameRate = utils.ParseFloat32(track.FrameRate)
+			videoMetadata.AudioBitRate = utils.ParseFloat64(track.BitRate)
+			videoMetadata.AudioFrameRate = utils.ParseFloat64(track.FrameRate)
 			videoMetadata.AudioChannels = utils.ParseInt(track.Channels)
-			videoMetadata.AudioDuration = utils.ParseFloat32(track.Duration)
+			videoMetadata.AudioDuration = utils.ParseFloat64(track.Duration)
 		}
 	}
 }
