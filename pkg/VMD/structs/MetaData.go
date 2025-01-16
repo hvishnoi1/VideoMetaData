@@ -6,14 +6,14 @@ type VideoMetaData struct {
 	AspectRatio string `json:"aspectRatio,omitempty"`
 	FileSize    int64  `json:"fileSize,omitempty"`
 
-	VideoDuration  float32 `json:"videoDuration,omitempty"`
+	VideoDuration  float64 `json:"videoDuration,omitempty"`
 	VideoCodec     string  `json:"videoCodec,omitempty"`
-	VideoBitRate   float32 `json:"videoBitRate,omitempty"`
-	VideoFrameRate float32 `json:"videoFrameRate,omitempty"`
+	VideoBitRate   float64 `json:"videoBitRate,omitempty"`
+	VideoFrameRate float64 `json:"videoFrameRate,omitempty"`
 
 	AudioCodec     string  `json:"audioCodec,omitempty"`
-	AudioBitRate   float32 `json:"audioBitRate,omitempty"`
-	AudioFrameRate float32 `json:"audioFrameRate,omitempty"`
+	AudioBitRate   float64 `json:"audioBitRate,omitempty"`
+	AudioFrameRate float64 `json:"audioFrameRate,omitempty"`
 	AudioChannels  int     `json:"audioChannels,omitempty"`
-	AudioDuration  float32 `json:"audioDuration,omitempty"`
+	AudioDuration  float64 `json:"audioDuration,omitempty"`
 }
