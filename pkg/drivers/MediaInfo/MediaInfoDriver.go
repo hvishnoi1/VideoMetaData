@@ -104,7 +104,7 @@ func mapMediaInfoJsonToVideoMetaData(mediaInfoOutput MediaInfoOutput, videoMetad
 	for _, track := range mediaInfoOutput.Media.Track {
 		switch track.Type {
 		case TYPE_GENERAL:
-			videoMetadata.FileSize = utils.ParseInt64(track.FileSize) / 1024.0 / 1024.0 // Converting Bytes to MebiBytes (MiB)
+			videoMetadata.FileSize = utils.ParseFloat64(track.FileSize) / 1024.0 / 1024.0 // Converting Bytes to MebiBytes (MiB)
 		case TYPE_VIDEO:
 			videoMetadata.Height = utils.ParseInt(track.Height)
 			videoMetadata.Width = utils.ParseInt(track.Width)
