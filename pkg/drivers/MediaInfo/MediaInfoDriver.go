@@ -104,18 +104,18 @@ func mapMediaInfoJsonToVideoMetaData(mediaInfoOutput MediaInfoOutput, videoMetad
 	for _, track := range mediaInfoOutput.Media.Track {
 		switch track.Type {
 		case TYPE_GENERAL:
-			videoMetadata.FileSize = utils.ParseInt64(track.FileSize)
+			videoMetadata.FileSize = utils.ParseInt64(track.FileSize) / 1024.0 / 1024.0 // Converting Bytes to MebiBytes (MiB)
 		case TYPE_VIDEO:
 			videoMetadata.Height = utils.ParseInt(track.Height)
 			videoMetadata.Width = utils.ParseInt(track.Width)
 			videoMetadata.AspectRatio = utils.AspectRatioFloatToString(videoMetadata.Width, videoMetadata.Height)
 			videoMetadata.VideoDuration = utils.ParseFloat64(track.Duration)
 			videoMetadata.VideoCodec = track.Format
-			videoMetadata.VideoBitRate = utils.ParseFloat64(track.BitRate) / 1000.0
+			videoMetadata.VideoBitRate = utils.ParseFloat64(track.BitRate) / 1000.0 // Converting bps to kbps
 			videoMetadata.VideoFrameRate = utils.ParseFloat64(track.FrameRate)
 		case TYPE_AUDIO:
 			videoMetadata.AudioCodec = track.Format
-			videoMetadata.AudioBitRate = utils.ParseFloat64(track.BitRate) / 1000
+			videoMetadata.AudioBitRate = utils.ParseFloat64(track.BitRate) / 1000 // Converting bps to kbps
 			videoMetadata.AudioFrameRate = utils.ParseFloat64(track.FrameRate)
 			videoMetadata.AudioChannels = utils.ParseInt(track.Channels)
 			videoMetadata.AudioDuration = utils.ParseFloat64(track.Duration)
