@@ -15,7 +15,7 @@ type media struct {
 // Since this can grow very large, keep the fields sorted
 type track struct {
 	AudioCount            string `json:"AudioCount"`
-	BitRate               string `json:"BitRate"`
+	BitRate               string `json:"BitRate_Nominal"`
 	CodecID               string `json:"CodecID"`
 	CodecIDCompatible     string `json:"CodecID_Compatible"`
 	Channels              string `json:"Channels"`
