@@ -1,5 +1,7 @@
 package utils
 
+import "strings"
+
 const UNKNOWN_ASPECT_RATIO = "Unknown"
 
 func AspectRatioFloatToString(width, height int) string {
@@ -29,4 +31,25 @@ func AspectRatioFloatToString(width, height int) string {
 	default:
 		return UNKNOWN_ASPECT_RATIO
 	}
+}
+
+// Converts common codec name to its formal name
+func CommonCodecToFormal(codec string) string {
+	codec = strings.ToLower(codec)
+	switch codec {
+	case "avc":
+		{
+			return "h.264"
+		}
+	case "hevc":
+		{
+			return "h.265"
+		}
+	case "mp4":
+		{
+			return "mpeg-4"
+		}
+	}
+
+	return codec
 }
