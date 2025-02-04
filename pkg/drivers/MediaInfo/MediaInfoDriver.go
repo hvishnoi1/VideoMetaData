@@ -110,8 +110,11 @@ func mapMediaInfoJsonToVideoMetaData(mediaInfoOutput MediaInfoOutput, videoMetad
 			videoMetadata.Width = utils.ParseInt(track.Width)
 			videoMetadata.AspectRatio = utils.AspectRatioFloatToString(videoMetadata.Width, videoMetadata.Height)
 			videoMetadata.VideoDuration = utils.ParseFloat64(track.Duration)
-			videoMetadata.VideoCodec = utils.CommonCodecToFormal(track.Format)      // Converting common codec names to formal codec names
-			videoMetadata.VideoBitRate = utils.ParseFloat64(track.BitRate) / 1000.0 // Converting bps to kbps
+			videoMetadata.VideoCodec = utils.CommonCodecToFormal(track.Format)             // Converting common codec names to formal codec names
+			videoMetadata.VideoBitRate = utils.ParseFloat64(track.NominalBitRate) / 1000.0 // Converting bps to kbps
+			if videoMetadata.VideoBitRate == 0 {
+				videoMetadata.VideoBitRate = utils.ParseFloat64(track.BitRate) / 1000.0 // Converting bps to kbps
+			}
 			videoMetadata.VideoFrameRate = utils.ParseFloat64(track.FrameRate)
 		case TYPE_AUDIO:
 			videoMetadata.AudioCodec = strings.ToLower(track.Format)
