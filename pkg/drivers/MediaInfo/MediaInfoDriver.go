@@ -114,7 +114,7 @@ func mapMediaInfoJsonToVideoMetaData(mediaInfoOutput MediaInfoOutput, videoMetad
 			videoMetadata.VideoBitRate = utils.ParseFloat64(track.BitRate) / 1000.0 // Converting bps to kbps
 			videoMetadata.VideoFrameRate = utils.ParseFloat64(track.FrameRate)
 		case TYPE_AUDIO:
-			videoMetadata.AudioCodec = track.Format
+			videoMetadata.AudioCodec = strings.ToLower(track.Format)
 			videoMetadata.AudioBitRate = utils.ParseFloat64(track.BitRate) / 1000 // Converting bps to kbps
 			videoMetadata.AudioFrameRate = utils.ParseFloat64(track.FrameRate)
 			videoMetadata.AudioChannels = utils.ParseInt(track.Channels)
