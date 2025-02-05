@@ -75,6 +75,8 @@ func (m *MediaInfoDriver) GetVideoMetadata(file string) (*structs.VideoMetaData,
 
 	if err != nil {
 		return nil, err
+	} else if len(mediaInfo.Media.Track) == 0 {
+		return nil, errors.New(ERR_FAILED_TO_FETCH)
 	}
 
 	videoMetaData := &structs.VideoMetaData{}

@@ -15,4 +15,5 @@ const (
 	ERR_DRIVER_NOT_INITIALIZED = "error: Driver not initialized, intitialize driver by calling Init(...)"
 	ERR_DIR_PATH_PROVIDED      = "error: Provided path is a directory, expected executable file path"
 	ERR_EXEC_PERMISSION        = "error: The file is not execuatable"
+	ERR_FAILED_TO_FETCH        = "error: Failed to fetch mediainfo"
 )
